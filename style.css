@@ -1,0 +1,188 @@
+* {
+  padding: 0px;
+  margin: 0px; 
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://th.bing.com/th/id/R.d3daeb31f13c2a2ac940888d5115a217?rik=A%2fMFUm%2fjR0jj2Q&pid=ImgRaw&r=0");
+  background-position: center center;      /* achtergrond foto wordt niet herhaald, en is in het midden */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+
+
+.head {
+  width: 480px;
+  border: 2px solid #a6a6a6;
+  background: pink;
+  margin: 10px;       
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 0px;
+  color: #333;
+}
+
+.head {
+  width: 480px;
+  border: 2px solid #a6a6a6;
+  background: pink;
+  margin: 0px;       
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 0px;
+  color: #333;
+}
+
+
+ /* achtergrond in deze div is roze, 150px hoog. display is flex, dus grid. alles is in het midden met justify content center. Het rand is grijs*/
+
+
+.container {
+  display: grid;
+  place-items: center;
+  min-height: 100vh; 
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1em;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* Dit is voor Chrome/Edge */
+.card {
+  height: 150px;
+  width: 150px;
+  background-color: #ff5cbb;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+
+.card:hover {
+  transform: scale(1.10);
+} 
+
+/* Dit is voor Chrome/Edge */
+.card img {
+  width: 140px;
+  height: 130px;
+  opacity: 0;
+  transition: 0.3s all ease;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;              /* zorgt dat je de image niet kan slepen, want het is opacity niet visability */
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+
+
+
+
+
+.card.clicked {
+  background-color: orange;
+  pointer-events: none;
+}
+                                    /*kaarten met de class clicked zijn oranje, met de class checked licht groen */
+.card.checked {
+  background-color: lightgreen;
+  visibility: hidden;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.card.clicked img,
+.card.checked img {
+  opacity: 1;                        /* laat de foto zien als het geklikt is of gecheckt */
+}
+
+.card.red {
+  background-color: #f15f5f;      /*als het fout is wordt het rood */
+}
+
+
+
+.ScorePlayerOne {
+  float: left;
+  height: 450px;
+  width: 30%;
+  margin-top: 200px;
+  border-style: solid;
+  border-width: 10px;
+  color: blue;
+}                                      /* borden is rood/blauw en dik met solid, blauw is aan de linkerkant met float left en rood rechts */
+
+
+.ScorePlayerTwo {
+  float: right;
+  height: 450px;
+  width: 30%;
+  margin-top: 200px;
+  border-style: solid;      
+  border-width: 10px;
+  color: red;
+}
+
+h1 {
+  line-height: 200px;
+  margin-top: -100px;
+  position: relative;      /* Tekst in het midden, en boven. Tekst is wit. */
+  text-align: center;
+  top: 10%;
+  width: 100%;
+  color: white;
+}
+
+.score1 {
+  margin-top: 10px;
+  color: white;          /*  maakt de tekst wit, 10px tussen de top en de div met id=score, tekst is in het midden */
+  text-align: center;
+  font-size: 300px;
+}
+
+.score2 {
+  margin-top: 10px;
+  color: white;          
+  text-align: center;
+  font-size: 300px;
+}
+
+
+
+.ResetGame {
+  float: center;
+}
+
+.ButtonResetGame {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
