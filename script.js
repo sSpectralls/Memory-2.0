@@ -7,12 +7,12 @@ let seconds = 0;
 let Player = "player1";
 let correctCardCounter = 0;
 let Timer = document.getElementById("timer");
+const body = document.querySelector('body');
 const card = document.querySelectorAll(".card");
 const score1 = document.querySelector(".score1 span");
 const score2 = document.querySelector(".score2 span");
 const Reset = document.getElementById("reset");
 const cards = document.querySelectorAll(".cards .card");
-
 
 shuffleImage()
 
@@ -39,16 +39,31 @@ function stopTime () {
   clearInterval (time);                  //functie zodat de tijd stopt 
 }
 
+function winMenu() {
+ body.innerHTML += '<div id="winScreen"></div>';
+ document.querySelector('#winScreen').innerHTML = '<p>Player 1 won!</p>';
+            
+ setTimeout(() => {
+	 document.querySelector('#winScreen').style.background = 'rgba(0, 0, 0, .7)';
+ }, 100);
+			
+ setTimeout(() => {
+	 body.removeChild(document.querySelector('#winScreen'));
+ }, 2000);
+} 
 
-
-
-
-
-
-
-
-
-
+function winMenu2() {
+ body.innerHTML += '<div id="winScreen"></div>';
+ document.querySelector('#winScreen').innerHTML = '<p>Player 2 won!</p>';
+            
+ setTimeout(() => {
+	 document.querySelector('#winScreen').style.background = 'rgba(0, 0, 0, .7)';
+ }, 100);
+			
+ setTimeout(() => {
+	 body.removeChild(document.querySelector('#winScreen'));
+ }, 2000);
+} 
 
 
 
@@ -64,14 +79,11 @@ cards.forEach((card) => {
           TimeStarter = 1;                                  //begint de timer als TimeStarter 1 is, het wordt 1 als de eerste kaart gekozen is. Dat wordt gecheckt met counter.
           if (TimeStarter === 1) {
             startTime();
-          }
-          
+          }        
         } else {
           secondSelection = card.getAttribute("meme");
           counter = 0;
-
-
-          if (firstSelection === secondSelection) {
+           if (firstSelection === secondSelection) {
             const correctCards = document.querySelectorAll(".card[meme='" + firstSelection + "']");
              if (Player == "player1") {
                score1.innerHTML = parseInt(score1.innerHTML) + 1
@@ -90,28 +102,22 @@ cards.forEach((card) => {
             correctCards[1].classList.remove("clicked");
             correctCardCounter++;
 
-            // if (16 % 2 == 0 && Player === "player1") {
-            //   Player = "player1";
-            //   console.log("i will stay as player 1");
-            // } 
-            // if (16 % 2 == 0 && Player === "player2") {
-            //   Player = "player2";
-            //   console.log("i will stay as player 2");
-            // }
-
 
               
             if (correctCardCounter == 8) {
               stopTime();                                  //de tijd stopt als er 8 correcte paren zijn
             }
             if (correctCardCounter == 8 && score1.innerHTML > score2.innerHTML) {
-              alert("Congratulations, player 1 won");    
+              winMenu();
+              return;
             }
             if (correctCardCounter == 8 && score1.innerHTML < score2.innerHTML) {
-              alert("Congratulations, player 2 won");  
+              winMenu2();
+              return;
             } 
             if (correctCardCounter == 8 && score1.innerHTML == score2.innerHTML) {
-              alert("It's a draw!!")
+              winMenuDraw();                                     // nutteloos geworden, omdat nog steeds speler 1/2 bent als je een kaart gevonden hebt
+              return;
             }
           } else {
               const incorrectCards = document.querySelectorAll(".card.clicked");
@@ -119,16 +125,7 @@ cards.forEach((card) => {
               incorrectCards[0].classList.add("red");
               incorrectCards[1].classList.add("red");//verandert de class naar "red" voor css, zodat ik het het rood kan maken in css
             
-              // if (incorrectCards[0].classList.contains('red')){
-              //   card.style.pointerEvents = "none";
-              //   console.log("testtest1");
-              // }         
 
-              // if (incorrectCards[1].classList.contains('red')){
-              //   card.style.pointerEvents = "none";
-              //   console.log("testtest2");
-              // }                                                
-            
               setTimeout(() => {
                 incorrectCards[0].classList.remove("red");          //haalt de class "clicked" en "red" weg met een 1 seconde delay
                 incorrectCards[0].classList.remove("clicked");
@@ -155,5 +152,3 @@ cards.forEach((card) => {
         }
       });
 });
-
-

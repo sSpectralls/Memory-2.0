@@ -156,6 +156,30 @@ h1 {
   float: center;
 }
 
+#winScreen {
+	width: 100%;
+	height: 129vh;
+	position: absolute;
+	top: 0;
+	transition: background .4s;
+	overflow-y: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+
+#winScreen p {
+	color: white;
+	font-size: 60px;
+	transform: translateY(-70vh);
+	user-select: none;
+	text-shadow: 2px 2px 0 black;
+	animation: textDrop 2s;
+}
+
 
 @media screen and (max-width: 480px) {
 
@@ -172,6 +196,7 @@ h1 {
   place-items: center;
   cursor: pointer;
   transition: 0.3s all ease;   
+  pointer-event: auto;
   } 
   
   .card img {
@@ -246,4 +271,31 @@ h1 {
   text-align: center;
   font-size: 100px;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes textDrop {
+	0% {
+		transform: translateY(-70vh);
+	}
+	10% {
+		transform: translateY(-12vh);
+	}
+	90% {
+		transform: translateY(12vh);
+	}
+	100% {
+		transform: translateY(110vh);
+	}
 }
