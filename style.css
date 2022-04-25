@@ -16,11 +16,11 @@ body {
 
 
 .head {
-  width: 480px;
+  width: 400px; 
   border: 2px solid #a6a6a6;
   background: pink;
-  margin: 10px;       
-  height: 150px;
+  margin: 0px;       
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,19 +29,6 @@ body {
   color: #333;
 }
 
-.head {
-  width: 480px;
-  border: 2px solid #a6a6a6;
-  background: pink;
-  margin: 0px;       
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 0px;
-  color: #333;
-}
 
 
  /* achtergrond in deze div is roze, 150px hoog. display is flex, dus grid. alles is in het midden met justify content center. Het rand is grijs*/
@@ -61,10 +48,10 @@ body {
   margin-bottom: 40px;
 }
 
-/* Dit is voor Chrome/Edge */
+
 .card {
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 100px;
   background-color: #ff5cbb;
   border-radius: 10px;
   display: grid;
@@ -78,10 +65,10 @@ body {
   transform: scale(1.10);
 } 
 
-/* Dit is voor Chrome/Edge */
+
 .card img {
-  width: 140px;
-  height: 130px;
+  width: 85px;
+  height: 100px;
   opacity: 0;
   transition: 0.3s all ease;
   -webkit-user-drag: none;
@@ -93,12 +80,9 @@ body {
 
 
 
-
-
-
 .card.clicked {
   background-color: orange;
-  pointer-events: none;
+/*   pointer-events: none; */
 }
                                     /*kaarten met de class clicked zijn oranje, met de class checked licht groen */
 .card.checked {
@@ -121,22 +105,26 @@ body {
 .ScorePlayerOne {
   float: left;
   height: 450px;
-  width: 30%;
-  margin-top: 200px;
+  width: 25%;
+  margin-top: 15%;
+  margin-left: 3%;
   border-style: solid;
   border-width: 10px;
   color: blue;
+  background-color: grey;
 }                                      /* borden is rood/blauw en dik met solid, blauw is aan de linkerkant met float left en rood rechts */
 
 
 .ScorePlayerTwo {
   float: right;
   height: 450px;
-  width: 30%;
-  margin-top: 200px;
+  width: 25%;
+  margin-top: 15%;
+  margin-right: 3%;
   border-style: solid;      
   border-width: 10px;
   color: red;
+  background-color: grey;
 }
 
 h1 {
@@ -153,36 +141,102 @@ h1 {
   margin-top: 10px;
   color: white;          /*  maakt de tekst wit, 10px tussen de top en de div met id=score, tekst is in het midden */
   text-align: center;
-  font-size: 300px;
+  font-size: 250px;
 }
 
 .score2 {
   margin-top: 10px;
   color: white;          
   text-align: center;
-  font-size: 300px;
+  font-size: 250px;
 }
-
 
 
 .ResetGame {
   float: center;
 }
 
-.ButtonResetGame {
-  background-color: #4CAF50; 
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
 
+@media screen and (max-width: 480px) {
+
+  h2 {
+
+  }
+  .card {
+  height: 50px;
+  width: 30px;
+  background-color: #ff5cbb;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.3s all ease;   
+  } 
+  
+  .card img {
+    
+  }
+  .ScorePlayerTwo {
+  float: right;
+  height: 450px;
+  width: 25%;
+  margin-top: 15%;
+  margin-right: 3%;
+  border-style: solid;      
+  border-width: 10px;
+  color: red;
+  background-color: grey;
+  }
+  
+  .ScorePlayerOne {
+  float: left;
+  height: 450px;
+  width: 25%;
+  margin-top: 15%;
+  margin-right: 3%;
+  border-style: solid;      
+  border-width: 10px;
+  color: blue;
+  background-color: grey;
+  }
+  
+
+  .head {
+  width: 150px; 
+  border: 2px solid #a6a6a6;
+  background: pink;
+  margin: 0px;       
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 0px;
+  color: #333;
+  }
+
+  h1 {
+  line-height: 200px;
+  margin-top: -100px;
+  position: relative;      
+  text-align: center;
+  top: 10%;
+  width: 100%;
+  font-size: 10px;
+  color: #ffffff;
+  }
+
+  .score1 {
+  margin-top: 10px;
+  color: white;          
+  text-align: center;
+  font-size: 100px;
+  }
+
+  .score2 {
+  margin-top: 10px;
+  color: white;          
+  text-align: center;
+  font-size: 100px;
+  }
+}

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Game</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -24,7 +24,10 @@
   
 
 <div class="container">
-    <div> <h1 class="head">Memory Game</h1> </div>
+    <div class="head">
+      <h2>Memory Game</h2> 
+      <span id="timer">Timer: 0s</span>
+    </div>
     <div class="background"><button>Change background</button> </div>
     <input type="button" id=ButtonResetGame value="Reset Game" onClick="window.location.reload(true)"></input>
 
