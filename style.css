@@ -160,10 +160,11 @@ h1 {
 @media screen and (max-width: 480px) {
 
   h2 {
-
+  
   }
+  
   .card {
-  height: 50px;
+  height: 40px;
   width: 30px;
   background-color: #ff5cbb;
   border-radius: 10px;
@@ -174,14 +175,18 @@ h1 {
   } 
   
   .card img {
-    
+  width: 25px;
+  Height: 30px;
   }
+  
   .ScorePlayerTwo {
-  float: right;
-  height: 450px;
+  position: fixed;
+  height: 200px;
   width: 25%;
-  margin-top: 15%;
-  margin-right: 3%;
+  margin-bottom: 1px;
+  margin-right: 1px;
+  right: 0px;
+  bottom: 0px;
   border-style: solid;      
   border-width: 10px;
   color: red;
@@ -189,15 +194,17 @@ h1 {
   }
   
   .ScorePlayerOne {
-  float: left;
-  height: 450px;
+  position: fixed;
+  height: 200px;
   width: 25%;
-  margin-top: 15%;
-  margin-right: 3%;
+  margin-bottom: 1px;
+  margin-left: 1px;
+  bottom: 0;
   border-style: solid;      
   border-width: 10px;
   color: blue;
   background-color: grey;
+  
   }
   
 
@@ -211,7 +218,7 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 0px;
+  margin-top: 10px;
   color: #333;
   }
 
