@@ -2,17 +2,18 @@ let counter = 0;
 let firstSelection = "";
 let secondSelection = "";
 let time = 0;
-let TimeStarter = 0;
 let seconds = 0;
 let Player = "player1";
 let correctCardCounter = 0;
 let Timer = document.getElementById("timer");
+const LastWinnerText = document.getElementById("LastWinner");
 const body = document.querySelector('body');
 const card = document.querySelectorAll(".card");
 const score1 = document.querySelector(".score1 span");
 const score2 = document.querySelector(".score2 span");
-const Reset = document.getElementById("reset");
+const Reset = document.getElementById("ButtonResetGame");
 const cards = document.querySelectorAll(".cards .card");
+
 
 shuffleImage()
 
@@ -68,6 +69,42 @@ function winMenu2() {
 
 
 
+var Score1StorageArray = JSON.parse(localStorage.getItem("Player 1 score:")) || [];
+var Score2StorageArray = JSON.parse(localStorage.getItem("Player 2 score:")) || [];
+var WinnerPlayerArray = JSON.parse(localStorage.getItem("Winner:")) || [];
+
+
+localStorage.setItem("Player 1 score:", JSON.stringify(Score1StorageArray));
+localStorage.setItem("Player 2 score:", JSON.stringify(Score2StorageArray));
+localStorage.setItem("Winner:", JSON.stringify(WinnerPlayerArray));
+
+
+LastWinnerElement = WinnerPlayerArray[WinnerPlayerArray.length - 1];
+if (LastWinnerElement == "Player 1") {
+  LastWinnerText.innerHTML = "Player 1 won last time";
+} else if (LastWinnerElement == "Player 2") {
+  LastWinnerText.innerHTML = "Player 2 won last time";
+} else {
+  LastWinnerText.innerHTML = "";
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Main game//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 cards.forEach((card) => {
@@ -75,9 +112,8 @@ cards.forEach((card) => {
       card.classList.add("clicked");                                 //voegt de class "clicked" toe and de kaart die je klikt
         if (counter === 0) {
           firstSelection = card.getAttribute("meme");
-          counter++;
-          TimeStarter = 1;                                  //begint de timer als TimeStarter 1 is, het wordt 1 als de eerste kaart gekozen is. Dat wordt gecheckt met counter.
-          if (TimeStarter === 1) {
+          counter++;                                //begint de timer als TimeStarter 1 is, het wordt 1 als de eerste kaart gekozen is. Dat wordt gecheckt met counter.
+          if (counter === 1) {
             startTime();
           }        
         } else {
@@ -102,23 +138,43 @@ cards.forEach((card) => {
             correctCards[1].classList.remove("clicked");
             correctCardCounter++;
 
-
-              
+////////////////////LAATST CARD CLICKED/////////////////////////////////               
             if (correctCardCounter == 8) {
               stopTime();                                  //de tijd stopt als er 8 correcte paren zijn
             }
             if (correctCardCounter == 8 && score1.innerHTML > score2.innerHTML) {
               winMenu();
+              Score1StorageArray.push(score1.innerHTML);
+              Score2StorageArray.push(score2.innerHTML);
+              WinnerPlayerArray.push("Player 1");
+              localStorage.setItem("Player 1 score:", JSON.stringify(Score1StorageArray));
+              localStorage.setItem("Winner:", JSON.stringify(WinnerPlayerArray));
+              localStorage.setItem("Player 2 score:", JSON.stringify(Score2StorageArray));  
+
+            
+              for(var i = 0; i < WinnerPlayerArray.length; i++){
+                console.log(WinnerPlayerArray[i], " won");
+              }
+
               return;
             }
             if (correctCardCounter == 8 && score1.innerHTML < score2.innerHTML) {
               winMenu2();
+              Score2StorageArray.push(score2.innerHTML);
+              Score1StorageArray.push(score1.innerHTML);
+              WinnerPlayerArray.push("Player 2");
+              localStorage.setItem("Player 1 score:", JSON.stringify(Score1StorageArray)); 
+  	          localStorage.setItem("Winner:", JSON.stringify(WinnerPlayerArray));
+              localStorage.setItem("Player 2 score:", JSON.stringify(Score2StorageArray)); 
+
+              for(var i = 0; i < WinnerPlayerArray.length; i++){
+                console.log(WinnerPlayerArray[i], " won");
+              }
+              
               return;
             } 
-            if (correctCardCounter == 8 && score1.innerHTML == score2.innerHTML) {
-              winMenuDraw();                                     // nutteloos geworden, omdat nog steeds speler 1/2 bent als je een kaart gevonden hebt
-              return;
-            }
+////////////////////LAATST CARD CLICKED////////////////////////////////////////            
+             
           } else {
               const incorrectCards = document.querySelectorAll(".card.clicked");
       
@@ -152,3 +208,8 @@ cards.forEach((card) => {
         }
       });
 });
+
+
+
+
+
