@@ -34,46 +34,39 @@ body {
   text-align: center;
 }
 
-.ScoreButton {
-  float: right;
+.BackgroundButton, .ButtonResetGame, .ScoreButton {
   height: 30px;
   width: 33.3%;
   font-size: 12px;
   display: inline-block;
   padding:0.46em 1.6em;
   border:0.1em solid #000000;
-  margin: 0px;
   border-radius:0.12em;
   box-sizing: border-box;
   font-weight:300;
   color:#000000;
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
-  background-color:#0ba82a;
   transition: all 0.15s;
+}
+
+
+.ScoreButton {
+  float: left;
+  background-color:#0ba82a;
+}
+.ButtonResetGame {
+  background-color:#ff2424;
+}
+
+.BackgroundButton {
+  float: right;
+  background-color:#3874ff;
 }
 
 .ScoreButton:hover{
   text-shadow: 0 0 2em rgba(255,255,255,1);
   color:#FFFFFF;
   border-color:#FFFFFF;
-}
-
-.ButtonResetGame {
-  height: 30px;
-  width: 33.3%;
-  font-size: 12px;
-  display:inline-block;
-  padding:0.46em 1.6em;
-  border:0.1em solid #000000;
-  margin:0px;
-  border-radius:0.12em;
-  box-sizing: border-box;
-  font-weight:300;
-  color:#000000;
-  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
-  background-color:#ff2424;
-  text-align:center;
-  transition: all 0.15s;
 }
 
 .ButtonResetGame:hover{
@@ -83,24 +76,6 @@ body {
 }
 
 
-.BackgroundButton { 
-  float: left;
-  width: 33.3%;
-  height: 30px;
-  font-size: 12px;
-  display:inline-block;
-  padding:0.46em 1.6em;
-  border:0.1em solid #000000;
-  margin:0px;
-  border-radius:0.12em;
-  box-sizing: border-box;
-  font-weight:300;
-  color:#000000;
-  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
-  background-color:#3874ff;
-  text-align:center;
-  transition: all 0.15s;
-}
 
 .BackgroundButton:hover{
   text-shadow: 0 0 2em rgba(255,255,255,1);

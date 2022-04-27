@@ -13,10 +13,19 @@ const score1 = document.querySelector(".score1 span");
 const score2 = document.querySelector(".score2 span");
 const Reset = document.getElementById("ButtonResetGame");
 const cards = document.querySelectorAll(".cards .card");
+const player1 = document.getElementById("player1");
+const player2 = document.getElementById("player2");
 
 const ClickedCard = document.querySelector(".card.clicked");
 
 shuffleImage()
+
+
+let name1 = prompt("What is player 1's name.");
+let name2 = prompt("What is player 2's name.");
+player1.innerHTML = name1;
+player2.innerHTML = name2;
+
 
 function shuffleImage(){
 
@@ -44,9 +53,9 @@ function stopTime () {
 function winMenu() {
  body.innerHTML += '<div id="winScreen"></div>';
 if (score1.innerHTML > score2.innerHTML) {
-  document.querySelector('#winScreen').innerHTML = '<p>Player 1 won!</p>';
+  document.querySelector('#winScreen').innerHTML = "<p>" + player1.innerHTML + " won </p>";
  } else {
-  document.querySelector('#winScreen').innerHTML = '<p>Player 2 won!</p>';
+  document.querySelector('#winScreen').innerHTML = "<p>" + player2.innerHTML + " won </p>";
  }
  setTimeout(() => {
 	 document.querySelector('#winScreen').style.background = 'rgba(0, 0, 0, .7)';
@@ -61,21 +70,21 @@ if (score1.innerHTML > score2.innerHTML) {
 
 
 
-var Score1StorageArray = JSON.parse(localStorage.getItem("Player 1 score:")) || [];
-var Score2StorageArray = JSON.parse(localStorage.getItem("Player 2 score:")) || [];
+var Score1StorageArray = JSON.parse(localStorage.getItem(name1 + " score:")) || [];
+var Score2StorageArray = JSON.parse(localStorage.getItem(name2 + " score:")) || [];
 var WinnerPlayerArray = JSON.parse(localStorage.getItem("Winner:")) || [];
 
 
-localStorage.setItem("Player 1 score:", JSON.stringify(Score1StorageArray));
-localStorage.setItem("Player 2 score:", JSON.stringify(Score2StorageArray));
+localStorage.setItem(name1 + " score:", JSON.stringify(Score1StorageArray));
+localStorage.setItem(name2 + " score:", JSON.stringify(Score2StorageArray));
 localStorage.setItem("Winner:", JSON.stringify(WinnerPlayerArray));
 
 
 LastWinnerElement = WinnerPlayerArray[WinnerPlayerArray.length - 1];
-if (LastWinnerElement == "Player 1") {
-  LastWinnerText.innerHTML = "Player 1 won last time";
-} else if (LastWinnerElement == "Player 2") {
-  LastWinnerText.innerHTML = "Player 2 won last time";
+if (LastWinnerElement == name1) {
+  LastWinnerText.innerHTML = name1 + " won last time";
+} else if (LastWinnerElement == name2) {
+  LastWinnerText.innerHTML = name2 + " won last time";
 } else {
   LastWinnerText.innerHTML = "";
 }
@@ -136,10 +145,10 @@ cards.forEach((card) => {
               winMenu();
               Score1StorageArray.push(score1.innerHTML);
               Score2StorageArray.push(score2.innerHTML);
-              WinnerPlayerArray.push("Player 1");
-              localStorage.setItem("Player 1 score:", JSON.stringify(Score1StorageArray));
+              WinnerPlayerArray.push(name1);
+              localStorage.setItem(name1 + " score:", JSON.stringify(Score1StorageArray));
               localStorage.setItem("Winner:", JSON.stringify(WinnerPlayerArray));
-              localStorage.setItem("Player 2 score:", JSON.stringify(Score2StorageArray));  
+              localStorage.setItem(name2 + " score:", JSON.stringify(Score2StorageArray));  
 
 
               return;
@@ -148,10 +157,10 @@ cards.forEach((card) => {
               winMenu();
               Score2StorageArray.push(score2.innerHTML);
               Score1StorageArray.push(score1.innerHTML);
-              WinnerPlayerArray.push("Player 2");
-              localStorage.setItem("Player 1 score:", JSON.stringify(Score1StorageArray)); 
+              WinnerPlayerArray.push(name2);
+              localStorage.setItem(name1 + " score:", JSON.stringify(Score1StorageArray)); 
   	          localStorage.setItem("Winner:", JSON.stringify(WinnerPlayerArray));
-              localStorage.setItem("Player 2 score:", JSON.stringify(Score2StorageArray)); 
+              localStorage.setItem(name2 + " score:", JSON.stringify(Score2StorageArray)); 
 
               
               return;
