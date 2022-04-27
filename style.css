@@ -196,7 +196,6 @@ h1 {
   place-items: center;
   cursor: pointer;
   transition: 0.3s all ease;   
-  pointer-event: auto;
   } 
   
   .card img {

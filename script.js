@@ -14,6 +14,7 @@ const score2 = document.querySelector(".score2 span");
 const Reset = document.getElementById("ButtonResetGame");
 const cards = document.querySelectorAll(".cards .card");
 
+const ClickedCard = document.querySelector(".card.clicked");
 
 shuffleImage()
 
@@ -42,8 +43,11 @@ function stopTime () {
 
 function winMenu() {
  body.innerHTML += '<div id="winScreen"></div>';
- document.querySelector('#winScreen').innerHTML = '<p>Player 1 won!</p>';
-            
+if (score1.innerHTML > score2.innerHTML) {
+  document.querySelector('#winScreen').innerHTML = '<p>Player 1 won!</p>';
+ } else {
+  document.querySelector('#winScreen').innerHTML = '<p>Player 2 won!</p>';
+ }
  setTimeout(() => {
 	 document.querySelector('#winScreen').style.background = 'rgba(0, 0, 0, .7)';
  }, 100);
@@ -53,18 +57,6 @@ function winMenu() {
  }, 2000);
 } 
 
-function winMenu2() {
- body.innerHTML += '<div id="winScreen"></div>';
- document.querySelector('#winScreen').innerHTML = '<p>Player 2 won!</p>';
-            
- setTimeout(() => {
-	 document.querySelector('#winScreen').style.background = 'rgba(0, 0, 0, .7)';
- }, 100);
-			
- setTimeout(() => {
-	 body.removeChild(document.querySelector('#winScreen'));
- }, 2000);
-} 
 
 
 
@@ -100,11 +92,6 @@ if (LastWinnerElement == "Player 1") {
 
 
 
-
-
-
-
-
 //Main game//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 cards.forEach((card) => {
@@ -112,12 +99,22 @@ cards.forEach((card) => {
       card.classList.add("clicked");                                 //voegt de class "clicked" toe and de kaart die je klikt
         if (counter === 0) {
           firstSelection = card.getAttribute("meme");
-          counter++;                                //begint de timer als TimeStarter 1 is, het wordt 1 als de eerste kaart gekozen is. Dat wordt gecheckt met counter.
+          counter++;
           if (counter === 1) {
             startTime();
-          }        
+          }
         } else {
-          secondSelection = card.getAttribute("meme");
+          secondSelection =  card.getAttribute("meme");
+
+          //   var count= 0;
+          //   setInterval(function(){
+          //       if(count < 5){
+          //           card.removeEventListener("click", );
+          //           count++
+          //       }
+          //   },1000);
+          // }
+                    
           counter = 0;
            if (firstSelection === secondSelection) {
             const correctCards = document.querySelectorAll(".card[meme='" + firstSelection + "']");
@@ -151,15 +148,11 @@ cards.forEach((card) => {
               localStorage.setItem("Winner:", JSON.stringify(WinnerPlayerArray));
               localStorage.setItem("Player 2 score:", JSON.stringify(Score2StorageArray));  
 
-            
-              for(var i = 0; i < WinnerPlayerArray.length; i++){
-                console.log(WinnerPlayerArray[i], " won");
-              }
 
               return;
             }
             if (correctCardCounter == 8 && score1.innerHTML < score2.innerHTML) {
-              winMenu2();
+              winMenu();
               Score2StorageArray.push(score2.innerHTML);
               Score1StorageArray.push(score1.innerHTML);
               WinnerPlayerArray.push("Player 2");
@@ -167,9 +160,6 @@ cards.forEach((card) => {
   	          localStorage.setItem("Winner:", JSON.stringify(WinnerPlayerArray));
               localStorage.setItem("Player 2 score:", JSON.stringify(Score2StorageArray)); 
 
-              for(var i = 0; i < WinnerPlayerArray.length; i++){
-                console.log(WinnerPlayerArray[i], " won");
-              }
               
               return;
             } 
@@ -208,8 +198,6 @@ cards.forEach((card) => {
         }
       });
 });
-
-
 
 
 
