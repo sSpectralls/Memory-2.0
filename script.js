@@ -1,10 +1,13 @@
 let counter = 0;
+let i = 0;
 let firstSelection = "";
 let secondSelection = "";
 let time = 0;
 let seconds = 0;
 let Player = "player1";
 let correctCardCounter = 0;
+let name1 = prompt("What is player 1's name.");
+let name2 = prompt("What is player 2's name.");
 let Timer = document.getElementById("timer");
 const LastWinnerText = document.getElementById("LastWinner");
 const body = document.querySelector('body');
@@ -15,14 +18,16 @@ const Reset = document.getElementById("ButtonResetGame");
 const cards = document.querySelectorAll(".cards .card");
 const player1 = document.getElementById("player1");
 const player2 = document.getElementById("player2");
-
-const ClickedCard = document.querySelector(".card.clicked");
+const BgButton = document.getElementById("BgButton");
+var Score1StorageArray = JSON.parse(localStorage.getItem(name1 + " score:")) || [];
+var Score2StorageArray = JSON.parse(localStorage.getItem(name2 + " score:")) || [];
+var WinnerPlayerArray = JSON.parse(localStorage.getItem("Winner:")) || [];
+var BackgroundImage = ["https://th.bing.com/th/id/R.d3daeb31f13c2a2ac940888d5115a217?rik=A%2fMFUm%2fjR0jj2Q&pid=ImgRaw&r=0","https://c4.wallpaperflare.com/wallpaper/942/592/869/pixel-art-8-bit-wallpaper-preview.jpg","https://i.pinimg.com/originals/7d/98/84/7d98840fdff1b2e7cd508cc7f3a17403.jpg"];
 
 shuffleImage()
 
 
-let name1 = prompt("What is player 1's name.");
-let name2 = prompt("What is player 2's name.");
+
 player1.innerHTML = name1;
 player2.innerHTML = name2;
 
@@ -68,6 +73,32 @@ if (score1.innerHTML > score2.innerHTML) {
 
 
 
+BgButton.addEventListener("click", ChangeBackground);
+
+function ChangeBackground() { 
+  i++
+  if (i == BackgroundImage.length) {
+    i = 0;
+  }
+  selectBG = BackgroundImage[i];
+  document.body.style.backgroundImage = 'url(' + selectBG + ')';
+}
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var Score1StorageArray = JSON.parse(localStorage.getItem(name1 + " score:")) || [];
@@ -92,10 +123,6 @@ if (LastWinnerElement == name1) {
 
 
 
-
-function StopSpamming() {
-    card.style.pointerEvents = "none";
-}
 
 
 
