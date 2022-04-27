@@ -23,15 +23,90 @@ body {
   height: 100px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  text-align: center;
   flex-direction: column;
   margin-top: 0px;
   color: #333;
 }
 
+.buttons {
+  width: 400px;
+  text-align: center;
+}
+
+.ScoreButton {
+  float: right;
+  height: 30px;
+  width: 33.3%;
+  font-size: 12px;
+  display: inline-block;
+  padding:0.46em 1.6em;
+  border:0.1em solid #000000;
+  margin: 0px;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  font-weight:300;
+  color:#000000;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  background-color:#0ba82a;
+  transition: all 0.15s;
+}
+
+.ScoreButton:hover{
+  text-shadow: 0 0 2em rgba(255,255,255,1);
+  color:#FFFFFF;
+  border-color:#FFFFFF;
+}
+
+.ButtonResetGame {
+  height: 30px;
+  width: 33.3%;
+  font-size: 12px;
+  display:inline-block;
+  padding:0.46em 1.6em;
+  border:0.1em solid #000000;
+  margin:0px;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  font-weight:300;
+  color:#000000;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  background-color:#ff2424;
+  text-align:center;
+  transition: all 0.15s;
+}
+
+.ButtonResetGame:hover{
+  text-shadow: 0 0 2em rgba(255,255,255,1);
+  color:#FFFFFF;
+  border-color:#FFFFFF;
+}
 
 
- /* achtergrond in deze div is roze, 150px hoog. display is flex, dus grid. alles is in het midden met justify content center. Het rand is grijs*/
+.BackgroundButton { 
+  float: left;
+  width: 33.3%;
+  height: 30px;
+  font-size: 12px;
+  display:inline-block;
+  padding:0.46em 1.6em;
+  border:0.1em solid #000000;
+  margin:0px;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  font-weight:300;
+  color:#000000;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  background-color:#3874ff;
+  text-align:center;
+  transition: all 0.15s;
+}
+
+.BackgroundButton:hover{
+  text-shadow: 0 0 2em rgba(255,255,255,1);
+  color:#FFFFFF;
+  border-color:#FFFFFF;
+}
 
 
 .container {
@@ -244,6 +319,7 @@ h1 {
   flex-direction: column;
   margin-top: 10px;
   color: #333;
+  position: fixed;
   }
 
   h1 {
@@ -271,9 +347,6 @@ h1 {
   font-size: 100px;
   }
 }
-
-
-
 
 
 

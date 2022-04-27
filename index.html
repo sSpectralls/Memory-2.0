@@ -24,13 +24,16 @@
   
 
 <div class="container">
+  <div class="buttons">
+    <button class="BackgroundButton">Background</button> 
+    <input type="button" class=ButtonResetGame value="Reset Game" onClick="window.location.reload(false)"></input>
+    <button class=ScoreButton>Check score</button>
+  </div>
     <div class="head">
-      <h2>Memory Game</h2> 
+      <h2>Memory Game</h2>
       <p id="LastWinner"></p>
       <span id="timer">Timer: 0s</span>
     </div>
-    <div class="background"><button>Change background</button> </div>
-    <input type="button" id=ButtonResetGame value="Reset Game" onClick="window.location.reload(false)"></input>
 
      
     <div class="cards"> 
@@ -87,7 +90,6 @@
 </div>
 
 
-<button onclick="ScoreTracker()" type="button" >score tracker</button>
 <script src="script.js"></script>
 </body>
 

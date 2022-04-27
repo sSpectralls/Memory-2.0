@@ -84,7 +84,9 @@ if (LastWinnerElement == "Player 1") {
 
 
 
-
+function StopSpamming() {
+    card.style.pointerEvents = "none";
+}
 
 
 
@@ -96,24 +98,15 @@ if (LastWinnerElement == "Player 1") {
 
 cards.forEach((card) => {
     card.addEventListener("click", () => {
-      card.classList.add("clicked");                                 //voegt de class "clicked" toe and de kaart die je klikt
+      card.classList.add("clicked");                                //voegt de class "clicked" toe and de kaart die je klikt
         if (counter === 0) {
-          firstSelection = card.getAttribute("meme");
-          counter++;
-          if (counter === 1) {
+           firstSelection = card.getAttribute("meme");
+           counter++;
+           if (counter === 1) {
             startTime();
-          }
+           }
         } else {
           secondSelection =  card.getAttribute("meme");
-
-          //   var count= 0;
-          //   setInterval(function(){
-          //       if(count < 5){
-          //           card.removeEventListener("click", );
-          //           count++
-          //       }
-          //   },1000);
-          // }
                     
           counter = 0;
            if (firstSelection === secondSelection) {
